@@ -42,6 +42,13 @@ ul.ticks{padding-left:20px;margin:10px 0}.ticks li{margin:3px 0}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 0;padding:0;list-style:none}
 .tags li{font-size:13px;background:var(--bg2);border-radius:6px;padding:2px 9px;color:var(--accent-d)}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:18px}
+.project-card{padding:0;overflow:hidden;display:flex;flex-direction:column}
+.project-card>img{width:100%;height:175px;object-fit:cover;background:var(--bg2)}
+.project-card .project-copy{padding:18px;display:flex;flex:1;flex-direction:column;align-items:flex-start}
+.project-card .project-copy p{color:var(--muted);margin:4px 0 12px}
+.project-card .project-copy .tags{margin:0 0 16px}
+.project-card .project-copy .btn{margin-top:auto}
 .skill h3{font-size:17px;color:var(--accent)}.skill p{margin:0;color:var(--muted);font-size:15px}
 .tl{border-left:3px solid var(--accent);padding-left:20px;margin:0}.tl div{margin-bottom:18px;position:relative}
 .tl div::before{content:"";position:absolute;left:-28px;top:7px;width:13px;height:13px;border-radius:50%;background:var(--accent)}
@@ -84,45 +91,14 @@ nav ul.open{display:flex}nav li a{display:block;padding:12px 20px}section{paddin
 </div></section>
 
 <section class="alt" id="projets"><div class="wrap">
-<h2>Projets réseau</h2>
-<p class="lead">Des réseaux d’entreprise construits sous Cisco Packet Tracer, avec les configurations, les tests et un rapport détaillé.</p>
-
-<article class="card feat">
-<div>
-<span class="status">Terminé · 2026</span>
-<h3>Réseau d’entreprise : VLAN, NAT et ACL</h3>
-<p>Le réseau d’une petite entreprise avec trois services (Comptabilité, Informatique, Direction) séparés par des VLAN. Un routeur les relie, les postes reçoivent leur adresse automatiquement, un site web interne est accessible par son nom, et tout le monde accède à Internet. Une règle de sécurité empêche la Comptabilité d’accéder à la Direction.</p>
-<ul class="ticks"><li>VLAN 10, 20 et 30, lien trunk 802.1Q entre le switch et le routeur</li><li>Routage entre VLAN (router-on-a-stick)</li><li>DHCP, DNS et serveur web interne</li><li>NAT/PAT vers un Internet simulé</li><li>ACL : Comptabilité bloquée vers Direction</li><li>Tests validés : pings, navigateur, commandes show</li></ul>
-<ul class="tags"><li>Cisco Packet Tracer</li><li>VLAN</li><li>DHCP</li><li>DNS</li><li>NAT</li><li>ACL</li></ul>
-<div class="btns">
-<a class="btn" href="https://github.com/jeanAngelin/reseau-entreprise-vlan-nat-acl" target="_blank" rel="noopener">Code et configurations</a>
-<a class="btn ghost" href="assets/Rapport_Reseau_Entreprise_Packet_Tracer.pdf" target="_blank" rel="noopener">Rapport (PDF)</a>
-</div>
-</div>
-<div class="shots">
-<figure style="margin:0"><img src="assets/projet-reseau-schema.png" width="902" height="612" loading="lazy" alt="Schéma du réseau d’entreprise avec trois VLAN"><figcaption class="cap">Schéma du réseau</figcaption></figure>
-<figure style="margin:0"><img src="assets/projet-reseau-web.png" width="1048" height="1040" loading="lazy" alt="Page web interne affichée par son nom de domaine"><figcaption class="cap">Site interne ouvert depuis un poste de la Comptabilité</figcaption></figure>
-</div>
-</article>
-
-<article class="card feat">
-<div>
-<span class="status wip">En cours</span>
-<h3>Réseau multi-sites à double cœur</h3>
-<p>Un réseau plus grand : un siège avec deux switches cœur qui se secourent (HSRP, MSTP), des serveurs protégés par un pare-feu ASA, une succursale, un réseau externe, des liaisons WAN en OSPF et un accès VPN IPsec pour les utilisateurs mobiles.</p>
-<ul class="ticks"><li>Redondance du cœur de réseau et des passerelles</li><li>Pare-feu devant les serveurs (DNS, web, FTP, e-mail)</li><li>Routage OSPF entre les sites</li><li>Wi-Fi et VPN pour les mobiles</li></ul>
-<ul class="tags"><li>HSRP</li><li>MSTP</li><li>OSPF</li><li>ASA</li><li>VPN IPsec</li><li>Wi-Fi</li></ul>
-<p class="cap">Réalisation en cours : les configurations et le rapport seront ajoutés sur GitHub.</p>
-</div>
-<figure style="margin:0"><img src="assets/topologie-multisite.jpg" width="1600" height="1095" loading="lazy" alt="Plan de la topologie du réseau multi-sites"><figcaption class="cap">Plan de la topologie en cours de réalisation</figcaption></figure>
-</article>
-
-<h2 style="margin-top:40px">Applications développées</h2>
-<p class="lead">Des logiciels créés pour gérer des informations.</p>
-<div class="grid">
-<article class="card"><h3>Tahiry Stock</h3><p>Gestion de stock avec alertes automatiques.</p><ul class="tags"><li>React</li><li>FastAPI</li><li>PostgreSQL</li></ul></article>
-<article class="card"><h3>Registre Médical</h3><p>Application de bureau pour gérer des registres, utilisable sans connexion Internet.</p><ul class="tags"><li>Application de bureau</li><li>Node.js</li></ul></article>
-<article class="card"><h3>Assistant IA</h3><p>Répond automatiquement aux questions des utilisateurs.</p><ul class="tags"><li>Python</li><li>IA</li></ul></article>
+<h2>Projets</h2>
+<p class="lead">Choisissez un projet pour consulter sa présentation, ses captures, ses configurations et ses ressources.</p>
+<div class="project-grid">
+<article class="card project-card"><img src="assets/projet-reseau-schema.png" width="902" height="612" loading="lazy" alt="Aperçu du réseau d’entreprise avec trois VLAN"><div class="project-copy"><span class="status">Terminé · 2026</span><h3>Réseau d’entreprise : VLAN, NAT et ACL</h3><p>Réseau segmenté en trois services, avec routage, services internes et règles d’accès.</p><ul class="tags"><li>Packet Tracer</li><li>VLAN</li><li>NAT</li><li>ACL</li></ul><a class="btn" href="projets/reseau-vlan-nat-acl.html">Voir le projet</a></div></article>
+<article class="card project-card"><img src="assets/topologie-multisite.jpg" width="1600" height="1095" loading="lazy" alt="Aperçu de la topologie du réseau multi-sites"><div class="project-copy"><span class="status wip">En cours</span><h3>Réseau multi-sites à double cœur</h3><p>Topologie avec redondance, pare-feu, routage entre sites et VPN.</p><ul class="tags"><li>HSRP</li><li>OSPF</li><li>ASA</li><li>VPN IPsec</li></ul><a class="btn" href="projets/reseau-multisites.html">Voir le projet</a></div></article>
+<article class="card project-card"><div class="project-copy"><h3>Tahiry Stock</h3><p>Application de gestion de stock avec alertes automatiques.</p><ul class="tags"><li>React</li><li>FastAPI</li><li>PostgreSQL</li></ul><a class="btn" href="projets/tahiry-stock.html">Voir le projet</a></div></article>
+<article class="card project-card"><div class="project-copy"><h3>Registre Médical</h3><p>Application de bureau utilisable hors connexion pour gérer des registres.</p><ul class="tags"><li>Application de bureau</li><li>Node.js</li></ul><a class="btn" href="projets/registre-medical.html">Voir le projet</a></div></article>
+<article class="card project-card"><div class="project-copy"><h3>Assistant IA</h3><p>Assistant qui répond automatiquement aux questions des utilisateurs.</p><ul class="tags"><li>Python</li><li>IA</li></ul><a class="btn" href="projets/assistant-ia.html">Voir le projet</a></div></article>
 </div>
 </div></section>
 
